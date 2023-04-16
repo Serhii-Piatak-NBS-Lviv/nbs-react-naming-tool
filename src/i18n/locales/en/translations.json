@@ -1,0 +1,16 @@
+{
+    "filter header - get inspiration": "Get inspiration for your new puppy here!",
+    "filter subtitle - we compiled a list": "We've compiled a list of over 1,000 unique and adorable dog names to help you find the perfect fit for your new puppy.",
+    "filter slider title": "Find out all the names",
+    "filter live search title": "Are you looking for a specific name?",
+    "filter live search placeholder": "Search for a specific name",
+    "filter gender selector title": "Do you want to select a gender?",
+    "filter gender female": "Female",
+    "filter gender male": "Male",
+    "filter gender both": "Both",
+    "view section title": "All pet names",
+    "alphabet": "A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z",
+    "view hero landing title": "i need a name",
+    "view notfound warn": "Ops, you've selected too many fiters and there is not matching names for that!",
+    "view notfound tips": "Try removing some filters"
+}
