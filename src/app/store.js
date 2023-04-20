@@ -8,5 +8,6 @@ export default configureStore({
         filter: filterReducer,
         view: viewReducer,
         common: commonReducer,
+        isLoading: false,
     }
 });

@@ -2,7 +2,7 @@ import React from 'react';
 import { css, ThemeProvider, useTheme } from '@emotion/react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import themes from '../../app/themes';
+import themes from '../../themes';
 import namesList from '../../app/apisimul/view/names-list';
 import nameSelection from '../../app/apisimul/view/name-selection';
 

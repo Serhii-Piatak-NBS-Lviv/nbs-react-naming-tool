@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { css, ThemeProvider, useTheme } from '@emotion/react';
-import themes from '../../app/themes';
+import { css, cx } from '@emotion/css';
+import themify, {themes} from '../../themes';
 import restAPI from '../../app/apisimul/filter/name-categories';
 
 /**
@@ -15,14 +15,22 @@ used from src/app/apisimul  folder
 * to filterSlice part of Redux storage
 **/
 
-const Filter = ({locale, themeName}) => {
+const Filter = () => {
     const { t } = useTranslation();
-    const themingParams = themes[themeName].filter;
+    const theme = useSelector(state => state.common.theme);
+
+    const defaultTheme = css(themify('ttt-default','filters'));
+    const overrideTheme = ((theme !== 'ttt-default') && (themes[theme])) ? css(themify(theme,'filters')) : null;
+    const isThemeOverriden = ((theme !== 'ttt-default') && (themes[theme])) ? true : false;
 
     return(
-        <ThemeProvider theme={themingParams}>
+        <div className={cx(
+            { [defaultTheme]: true },
+            { [overrideTheme]: isThemeOverriden }
+        )} id="filters">
             <img src={require('../../app/images/Content - Search.png')} />
-        </ThemeProvider>
+            <h1>{t('view hero landing title')}</h1>
+        </div>
         
     )
 };
