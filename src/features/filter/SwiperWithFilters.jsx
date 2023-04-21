@@ -17,7 +17,7 @@ import 'swiper/css/scrollbar';
 const SwiperWithFilters = ({title, restAPI}) => {
     const dispatch = useDispatch();    
 
-    const [mainTitle, overrideTitle, isMainTitleOverriden] = useThemify('filters');
+    const [mainTitle, overrideTitle, isMainTitleOverriden] = useThemify('filters-categories-title');
 
     const handleFilter = (category) => {
         dispatch(setSelectedCategory(category));
@@ -34,7 +34,7 @@ const SwiperWithFilters = ({title, restAPI}) => {
         <Swiper
             modules={[Navigation, Scrollbar, A11y]}
             spaceBetween={20}
-            slidesPerView={7}
+            slidesPerView={6}
             navigation
             scrollbar={{ draggable: true }}>
             {

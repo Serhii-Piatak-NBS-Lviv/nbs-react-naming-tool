@@ -33,6 +33,7 @@ export const themes = {
             'lineHeight': '32px',
             'maxWidth': '785px',
             'margin': '0 auto',
+            
         },        
 
         "filters-categories-title": {
@@ -89,7 +90,11 @@ export const themes = {
             'fontSize': '16px',
             'lineHeight': '24px',
             'color': '#000000',
-            'margin': '0 16px 16px 0',    
+            'margin': '0 16px 16px 0', 
+            
+            ':hover': {
+                'background': 'green',
+            },
         },
 
         "bottom-filter-wrapper": {
