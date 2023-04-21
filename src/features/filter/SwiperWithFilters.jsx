@@ -1,4 +1,3 @@
-import React from 'react';
 import { useSelector, useDispatch  } from 'react-redux';
 import { css, cx } from '@emotion/css';
 import themify, {themes} from '../../themes';
@@ -17,7 +16,7 @@ import 'swiper/css/scrollbar';
 
 const SwiperWithFilters = ({title, restAPI}) => {
     const theme = useSelector(state => state.common.theme);
-    const dispatch = useDispatch();
+    const dispatch = useDispatch();    
 
     const mainTitle = css(themify('ttt-default','filters-categories-title'));
     const overrideTitle = ((theme !== 'ttt-default') && (themes[theme])) ? css(themify(theme,'filters-categories-title')) : null;
@@ -25,7 +24,7 @@ const SwiperWithFilters = ({title, restAPI}) => {
     const isThemeOverriden = ((theme !== 'ttt-default') && (themes[theme])) ? true : false;
 
     const handleFilter = (category) => {
-        dispatch(setSelectedCategory(category))
+        dispatch(setSelectedCategory(category));
     }
 
   return (
@@ -39,7 +38,7 @@ const SwiperWithFilters = ({title, restAPI}) => {
         <Swiper
             modules={[Navigation, Scrollbar, A11y]}
             spaceBetween={20}
-            slidesPerView={6}
+            slidesPerView={7}
             navigation
             scrollbar={{ draggable: true }}>
             {

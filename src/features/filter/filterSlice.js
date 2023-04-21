@@ -33,9 +33,15 @@ export const filterSlice = createSlice({
                 gender: action.payload,
             };
         },        
-    },
+        setSpecificName: (state, action) => {
+            return {
+                ...state,
+                specificName: action.payload,
+            };
+        },
+    },    
 });
 
-export const { setSelectedCategory, setGender } = filterSlice.actions;
+export const { setSelectedCategory, setSpecificName, setGender } = filterSlice.actions;
 
 export default filterSlice.reducer;

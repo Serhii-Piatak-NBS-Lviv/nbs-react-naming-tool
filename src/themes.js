@@ -52,7 +52,7 @@ export const themes = {
             'padding': '25px 0',
             'margin': 'auto',
             'height': '130px',
-            'width': '150px',
+            'width': '130px',
             'display': 'flex',
             'flexDirection': 'column',
             'justifyContent': 'space-between',
@@ -90,6 +90,11 @@ export const themes = {
             'lineHeight': '24px',
             'color': '#000000',
             'marginRight': '16px',    
+        },
+
+        "bottom-filter-wrapper": {
+            'display': 'flex',
+            'justifyContent': 'space-between',
         },
 
 

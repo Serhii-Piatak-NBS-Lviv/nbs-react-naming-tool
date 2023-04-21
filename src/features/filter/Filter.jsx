@@ -7,6 +7,8 @@ import restAPI from '../../app/apisimul/filter/name-categories';
 
 import SectionHeader from './SectionHeader';
 import SwiperWithFilters from './SwiperWithFilters';
+import GenderSelection from './GenderSelection';
+import SearchInput from './SearchInput';
 
 /**
 * @restAPI  - list of name categories will come from 
@@ -24,6 +26,10 @@ const Filter = () => {
 
     const defaultTheme = css(themify('ttt-default','filters'));
     const overrideTheme = ((theme !== 'ttt-default') && (themes[theme])) ? css(themify(theme,'filters')) : null;
+
+    const bottomFilter = css(themify('ttt-default','bottom-filter-wrapper'));
+    const overrideBottomFilter = ((theme !== 'ttt-default') && (themes[theme])) ? css(themify(theme,'bottom-filter-wrapper')) : null;
+
     const isThemeOverriden = ((theme !== 'ttt-default') && (themes[theme])) ? true : false;
 
     return(
@@ -39,6 +45,17 @@ const Filter = () => {
                 title={t('filter slider title')}
                 restAPI={restAPI}
             />
+            <div className={cx(
+            { [bottomFilter]: true },
+            { [overrideBottomFilter]: isThemeOverriden }
+        )}>
+                <SearchInput 
+                    title={t('filter live search title')}
+                />
+                <GenderSelection 
+                    title={t('filter gender selector title')}
+                />
+            </div>
         </div>        
     )
 };
