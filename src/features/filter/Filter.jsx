@@ -1,8 +1,8 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { css, cx } from '@emotion/css';
-import themify, {themes} from '../../themes';
+import { cx } from '@emotion/css';
+import useThemify from '../../app/useThemify';
 import restAPI from '../../app/apisimul/filter/name-categories';
 
 /**
@@ -17,11 +17,7 @@ used from src/app/apisimul  folder
 
 const Filter = () => {
     const { t } = useTranslation();
-    const theme = useSelector(state => state.common.theme);
-
-    const defaultTheme = css(themify('ttt-default','filters'));
-    const overrideTheme = ((theme !== 'ttt-default') && (themes[theme])) ? css(themify(theme,'filters')) : null;
-    const isThemeOverriden = ((theme !== 'ttt-default') && (themes[theme])) ? true : false;
+    const [defaultTheme, overrideTheme, isThemeOverriden] = useThemify('filters');
 
     return(
         <div className={cx(

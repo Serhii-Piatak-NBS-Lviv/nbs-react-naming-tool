@@ -18,6 +18,7 @@ Comprehensive overview of toolset used:
 | react-loading-overlay | A customizable, simple loading overlay with spinner and transitions | [NPM-page](https://www.npmjs.com/package/react-loading-overlay) | [homepage](https://github.com/derrickpelletier/react-loading-overlay#readme) |
 | react-redux | React Application state management toolkit | [NPM-page](https://www.npmjs.com/package/react-redux) | [homepage](https://redux.js.org/) |
 | react-spinners | A collection of loading spinners with React.js | [NPM-page](https://www.npmjs.com/package/react-spinners) | [homepage](https://www.davidhu.io/react-spinners/) |
+| swiper | Modern Mobile Touch Slider | [NPM-page](https://www.npmjs.com/package/swiper) | [homepage] (https://swiperjs.com/) |
 
 
 ## Application Look&Feel, Main React Components
@@ -88,9 +89,12 @@ app
  |                 |______...[API-simulation static files for "View"]
  |___images
  |      |_______...[static image assets]
+ |
+ |___fonts
+ |      |_______...[fonts assets]
+ |
  |___commonSlice.js
  |___store.js
- |___themes.js
 
 ```
 
@@ -98,11 +102,11 @@ app
 
 `images` folder is just a storage for static images used in this project.
 
+`fonts` folder contains all assets related to fonts.
+
 `commonSlice.js` file contains fragment of redux-store which relates to the whole app in the aggregate.
 
 `store.js` it's a top-level redux-store file which assembles all application state management parts as a whole.
-
-`themes.js` it's a file which describes all themes available for this application and defines theming parameters.
 
 ---
 **i18n folder**
@@ -149,6 +153,83 @@ To add the localization for one or the other language, developers creating appro
 
 One of the main goals of this project is to create reusable widget. In another words, this application can be used multiple brands (PetCare, Lilly's kitchen, ProPlan etc.). Each brand has it's own visual identity. 
 
-Thus, in scope of this project theming means color scheme of React components (background colors and font colors). To have basic understanding how theming works with Emotion library, it's strongly recommended to read "[Theming](https://emotion.sh/docs/theming)" section of Emotion-library's documentation.
+Thus, in scope of this project theming means color scheme of React components (background colors and font colors) and font garniture applied as well.
 
-> When it comes to background- and font-colors of React components and sub-components, developers maintaining this project agreed to use `ThemeProvider` and\or `useTheme hook` from Emotion library to deliver proper color scheme values (stored inside `themes.js` file) to css- styling rules.
+Files named `themes.js` and `fonts.js` are core of theming subsystem of this project and they're stored in the root of project (near `App.js` and `index.js` files).
+
+### Fonts
+
+Locally stored font files sits inside `fonts` folder. `fonts.js` file contains a registry of all fonts locally available. This fonts registry exported upon `FONTS_REGISTRY` constant.
+
+Not all locally stored fonts being uploaded into the browser in one go. Keeping in mind RAM usage savings only fonts which are used by active theme will be uploaded into browser memory that being. For this reason each theme object from `theme.js` file has `fonts-list` field contains list of fonts required by this theme.
+
+Also `theme.js`- file exports `fontsLoader` function which takes theme name as an argument and constructs a directive for loading all needed fonts into project's global scope. Function `injectGlobal` from Emotion library is responsible for actually uploading fonts to project's global scope.
+
+> A "To-Upload" list of fonts is aggregated: it contains both default theme's fonts and overriding theme's fonts.
+
+### Themes (color schemes)
+
+All available themes serving for UI-components decorating and they stored inside `themes.js` file. Themes exported via `themes` constant.
+
+Each theme represented by the object. Each theme-object contains nested objects representing UI-components. UI-component object contains set of CSS-rules which decorates one's look&feel in accordance to the theme.
+
+> It's good approach to assign `id`-attribute for interface component same as a key for UI-component object in `themes.js` file:
+```
+// themes.js file
+ ...
+ "dummy-component": {
+    'backgroundColor': 'transparent',
+    'border': 'none',
+    'color': '#3A3533',
+    'fontFamily': 'roboto_slabregular',
+  },
+
+  ...
+
+
+-----------------
+// react .jsx   file
+
+const ReactItem = () => {
+
+    return(
+        <div id="dummy-component">
+            <img src={require('../../app/images/Content - Search.png')} />
+            <h1>{t('view hero landing title')}</h1>
+        </div>
+        
+    )
+};
+```
+
+> :exclamation::exclamation::exclamation: If css-parameters provided via object, they should be written in `camelCase` instead of `kebab-case` :exclamation::exclamation::exclamation:. For example, `background-color` property in object should be written as `backgroundColor`. 
+
+If it's needed to dynamically themify the UI-component, you have to use `useThemify` custom react hook:
+
+```
+< ... bunch of imports >
+import { cx } from '@emotion/css';
+import useThemify from '<path_to_themes.js>';
+
+
+const SomeComponent = () => {
+
+  const [defaultTheme, overrideTheme, isThemeOverriden] = useThemify('filters');
+
+  return(
+        <sometag className={cx(
+            { [defaultTheme]: true },
+            { [overrideTheme]: isThemeOverriden }
+        )} id="component-id">
+
+            <... content stuff or child components>
+
+        </sometag>
+        
+    )
+};
+
+```
+
+This pattern works basing on cascading principles (same as CSS by itself). It means that each time when you creating new theme you shouldn't have to specify all cumbersome details about each UI-component look&feel. Instead of it you selectively have to describe only that points which overrides default theme styles. Any others will be taken from default theme.
+
