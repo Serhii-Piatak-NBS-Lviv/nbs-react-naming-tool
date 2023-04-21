@@ -4,7 +4,7 @@ import useThemify from '../../app/hooks/useThemify';
 const CategoryItem = ({title, icon, handleFilter}) => {
 
     const [categoryWrapper, overrideCategoryWrapper, isCategoryWrapperOverriden] = useThemify('filter-category');
-    const [Title, overrideTitle, isTitleOverriden] = useThemify('filter-category-title');
+    const [Title, overrideTitle, isTitleOverriden] = useThemify('filter-category');
 
   return (
     <div className={cx(

@@ -1,8 +1,6 @@
-import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
-import { css, cx } from '@emotion/css';
-import themify, {themes} from '../../themes';
-
+import { cx } from '@emotion/css';
+import useThemify from '../../app/hooks/useThemify';
 import restAPI from '../../app/apisimul/filter/name-categories';
 
 import SectionHeader from './SectionHeader';
@@ -22,15 +20,9 @@ used from src/app/apisimul  folder
 
 const Filter = () => {
     const { t } = useTranslation();
-    const theme = useSelector(state => state.common.theme);
 
-    const defaultTheme = css(themify('ttt-default','filters'));
-    const overrideTheme = ((theme !== 'ttt-default') && (themes[theme])) ? css(themify(theme,'filters')) : null;
-
-    const bottomFilter = css(themify('ttt-default','bottom-filter-wrapper'));
-    const overrideBottomFilter = ((theme !== 'ttt-default') && (themes[theme])) ? css(themify(theme,'bottom-filter-wrapper')) : null;
-
-    const isThemeOverriden = ((theme !== 'ttt-default') && (themes[theme])) ? true : false;
+    const [defaultTheme, overrideTheme, isThemeOverriden] = useThemify('filters');
+    const [bottomFilter, overrideBottomFilter, isBottomFilterThemeOverriden] = useThemify('bottom-filter-wrapper');
 
     return(
         <div className={cx(
@@ -47,7 +39,7 @@ const Filter = () => {
             />
             <div className={cx(
             { [bottomFilter]: true },
-            { [overrideBottomFilter]: isThemeOverriden }
+            { [overrideBottomFilter]: isBottomFilterThemeOverriden }
         )}>
                 <SearchInput 
                     title={t('filter live search title')}

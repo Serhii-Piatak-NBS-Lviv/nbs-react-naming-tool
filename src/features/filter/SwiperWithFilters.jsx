@@ -1,6 +1,6 @@
-import { useSelector, useDispatch  } from 'react-redux';
-import { css, cx } from '@emotion/css';
-import themify, {themes} from '../../themes';
+import { useDispatch  } from 'react-redux';
+import { cx } from '@emotion/css';
+import useThemify from '../../app/hooks/useThemify';
 
 import { Navigation, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -15,13 +15,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
 
 const SwiperWithFilters = ({title, restAPI}) => {
-    const theme = useSelector(state => state.common.theme);
     const dispatch = useDispatch();    
 
-    const mainTitle = css(themify('ttt-default','filters-categories-title'));
-    const overrideTitle = ((theme !== 'ttt-default') && (themes[theme])) ? css(themify(theme,'filters-categories-title')) : null;
-
-    const isThemeOverriden = ((theme !== 'ttt-default') && (themes[theme])) ? true : false;
+    const [mainTitle, overrideTitle, isMainTitleOverriden] = useThemify('filters');
 
     const handleFilter = (category) => {
         dispatch(setSelectedCategory(category));
@@ -31,7 +27,7 @@ const SwiperWithFilters = ({title, restAPI}) => {
     <div>
         <h3 className={cx(
             { [mainTitle]: true },
-            { [overrideTitle]: isThemeOverriden }
+            { [overrideTitle]: isMainTitleOverriden }
         )}>
             {title}
         </h3>
@@ -52,8 +48,7 @@ const SwiperWithFilters = ({title, restAPI}) => {
             }       
             <SelectedFilters handleFilter={handleFilter}/> 
         </Swiper>
-    </div>
-    
+    </div>    
   )
 }
 

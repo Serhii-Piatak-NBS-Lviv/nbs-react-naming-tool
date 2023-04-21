@@ -1,24 +1,17 @@
 import { useSelector } from 'react-redux';
-import { css, cx } from '@emotion/css';
-import themify, {themes} from '../../themes';
-
+import { cx } from '@emotion/css';
+import useThemify from '../../app/hooks/useThemify';
 
 const SelectedFilters = ({handleFilter}) => {
-    const theme = useSelector(state => state.common.theme);
     const activeFilters = useSelector(state => state.filter.selectedCategories);
 
-    const selectedFilters = css(themify('ttt-default','selected-filters-wrapper'));
-    const overrideSelectedFilters = ((theme !== 'ttt-default') && (themes[theme])) ? css(themify(theme,'selected-filters-wrapper')) : null;
-
-    const selectedItem = css(themify('ttt-default','selected-filters-item'));
-    const overrideSelectedItem = ((theme !== 'ttt-default') && (themes[theme])) ? css(themify(theme,'selected-filters-item')) : null;
-
-    const isThemeOverriden = ((theme !== 'ttt-default') && (themes[theme])) ? true : false;
+    const [selectedFilters, overrideSelectedFilters, isSelectedFiltersOverriden] = useThemify('selected-filters-wrapper');
+    const [selectedItem, overrideSelectedItem, isSelectedItemOverriden] = useThemify('selected-filters-item');
 
   return (
     <div className={cx(
         { [selectedFilters]: true },
-        { [overrideSelectedFilters]: isThemeOverriden }
+        { [overrideSelectedFilters]: isSelectedFiltersOverriden }
     )}>
 
         {
@@ -26,7 +19,7 @@ const SelectedFilters = ({handleFilter}) => {
                 return (
                     <span className={cx(
                         { [selectedItem]: true },
-                        { [overrideSelectedItem]: isThemeOverriden }
+                        { [overrideSelectedItem]: isSelectedItemOverriden }
                     )}
                         onClick={() => handleFilter(item)}
                         key={index}

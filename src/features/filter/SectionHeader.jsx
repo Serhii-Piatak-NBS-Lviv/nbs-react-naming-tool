@@ -1,29 +1,22 @@
-import { useSelector } from 'react-redux';
-import { css, cx } from '@emotion/css';
-import themify, {themes} from '../../themes';
+import { cx } from '@emotion/css';
 
+import useThemify from '../../app/hooks/useThemify';
 const SectionHeader = ({title, subTitle}) => {
-    const theme = useSelector(state => state.common.theme);
 
-    const mainTitle = css(themify('ttt-default','filters-title'));
-    const overrideTitle = ((theme !== 'ttt-default') && (themes[theme])) ? css(themify(theme,'filters-title')) : null;
-
-    const mainSubtitle = css(themify('ttt-default','filters-subtitle'));
-    const overrideSubtitle = ((theme !== 'ttt-default') && (themes[theme])) ? css(themify(theme,'filters-subtitle')) : null;
-    
-    const isThemeOverriden = ((theme !== 'ttt-default') && (themes[theme])) ? true : false;
+    const [mainTitle, overrideMainTitle, isMainTitleOverriden] = useThemify('filters-title');
+    const [mainSubtitle, overrideMainSubtitle, isMainSubtitleOverriden] = useThemify('filters-subtitle');    
 
   return (
     <>
         <h2 className={cx(
             { [mainTitle]: true },
-            { [overrideTitle]: isThemeOverriden }
+            { [overrideMainTitle]: isMainTitleOverriden }
         )}>
             {title}
         </h2>
         <p className={cx(
             { [mainSubtitle]: true },
-            { [overrideSubtitle]: isThemeOverriden }
+            { [overrideMainSubtitle]: isMainSubtitleOverriden }
         )}>
             {subTitle}
         </p>
