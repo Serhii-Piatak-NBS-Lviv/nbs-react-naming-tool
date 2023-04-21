@@ -75,7 +75,7 @@ export const themes = {
         "selected-filters-wrapper": {
             'display': 'flex',
             'flexWrap': 'wrap',
-            'padding': '15px 0',
+            'margin': '24px 0 16px',
         },
 
         "selected-filters-item": {
@@ -89,7 +89,7 @@ export const themes = {
             'fontSize': '16px',
             'lineHeight': '24px',
             'color': '#000000',
-            'marginRight': '16px',    
+            'margin': '0 16px 16px 0',    
         },
 
         "bottom-filter-wrapper": {
