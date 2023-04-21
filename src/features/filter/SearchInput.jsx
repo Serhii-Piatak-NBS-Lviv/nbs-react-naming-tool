@@ -1,4 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux';
+import { cx } from '@emotion/css';
+import useThemify from '../../app/hooks/useThemify';
 
 import { setSpecificName } from './filterSlice';
 
@@ -6,13 +8,30 @@ const SearchInput = ({title}) => {
     const dispatch = useDispatch();
     console.log(useSelector(state => state.filter.specificName));
 
+    const [wrapper, overrideWrapper, isWrapperOverriden] = useThemify('filter-searchInput-wrapper');
+    const [inputTitle, overrideInputTitle, isInputTitleOverriden] = useThemify('filter-input-title');
+    const [inputContainer, overrideInputContainer, isInputContainerOverriden] = useThemify('filter-input-container');
+
   return (
-    <div>
-        <p>{title}</p>
-        <input 
-          type="text" 
-          onChange={(e) => dispatch(setSpecificName(e.target.value))}
-        />
+    <div className={cx(
+      { [wrapper]: true },
+      { [overrideWrapper]: isWrapperOverriden }
+  )}>
+        <p className={cx(
+          { [inputTitle]: true },
+          { [overrideInputTitle]: isInputTitleOverriden }
+        )}>
+          {title}
+        </p>
+        <div className={cx(
+          { [inputContainer]: true },
+          { [overrideInputContainer]: isInputContainerOverriden }
+        )}>
+          <input 
+            type="text" 
+            onChange={(e) => dispatch(setSpecificName(e.target.value))}
+          />
+        </div>        
     </div>
   )
 }

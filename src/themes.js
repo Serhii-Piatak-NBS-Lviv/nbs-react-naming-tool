@@ -32,8 +32,7 @@ export const themes = {
             'fontSize': '20px',
             'lineHeight': '32px',
             'maxWidth': '785px',
-            'margin': '0 auto',
-            
+            'margin': '0 auto',            
         },        
 
         "filters-categories-title": {
@@ -90,16 +89,57 @@ export const themes = {
             'fontSize': '16px',
             'lineHeight': '24px',
             'color': '#000000',
-            'margin': '0 16px 16px 0', 
-            
-            ':hover': {
-                'background': 'green',
-            },
+            'margin': '0 16px 16px 0',             
         },
 
         "bottom-filter-wrapper": {
             'display': 'flex',
+            'alignItems': 'flex-end',
             'justifyContent': 'space-between',
+            'textAlign': 'left',
+        },
+        
+        'filter-searchInput-wrapper': {
+            'width': '100%',
+            'marginRight': '40px',
+        },
+
+        'filter-input-title': {
+            'fontFamily': 'roboto_slabregular',
+            'fontWeight': '400',
+            'fontSize': '20px',
+            'lineHeight': '32px',
+            'color': '#3A3533',
+        },
+
+        'filter-input-container': {
+            'background': '#FFFFFF',
+            'boxSizing': 'border-box',
+            'border': '1px solid #F9F8F5',
+            'boxShadow': '0px 4px 12px rgba(88, 79, 76, 0.12)',
+            'borderRadius': '10px',
+            'height': '92px',
+            'padding': '22px 27px',
+        },
+
+        "filter-gender-section": {
+            'background': '#FFFFFF',
+            'border': '1px solid #F9F8F5',
+            'boxShadow': '0px 4px 12px rgba(88, 79, 76, 0.12)',
+            'borderRadius': '10px',
+            'padding': '16px 27px',
+            'minWidth': '293px',
+            'height': '92px',
+            'boxSizing': 'border-box',
+        },
+
+        "filter-gender-section-title": {
+            'fontFamily': 'roboto_slabregular',
+            'fontWeight': '300',
+            'fontSize': '16px',
+            'lineHeight': '24px',            
+            'color': '#3A3533',
+            'margin': '0 0 15px',
         },
 
 
@@ -128,7 +168,7 @@ export const themes = {
             'backgroundColor': 'purple',
         },
 
-        "fonts-list": ['roboto_slabregular', 'robotothin_italic']
+        "fonts-list": ['roboto_slabregular', 'robotolight']
     },
 };
 

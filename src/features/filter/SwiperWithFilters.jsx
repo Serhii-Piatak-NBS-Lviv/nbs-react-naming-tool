@@ -34,7 +34,7 @@ const SwiperWithFilters = ({title, restAPI}) => {
         <Swiper
             modules={[Navigation, Scrollbar, A11y]}
             spaceBetween={20}
-            slidesPerView={6}
+            slidesPerView={7}
             navigation
             scrollbar={{ draggable: true }}>
             {
