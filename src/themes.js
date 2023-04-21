@@ -10,13 +10,17 @@ export const themes = {
         "filters": {
             'backgroundColor': '#F9F8F5',
             "border": 'none',
+            'textAlign': 'center',
+            'padding': '40px 15px',            
         },
 
         "filters-title": {
             'backgroundColor': 'transparent',
-            'border': 'none',
             'color': '#3A3533',
-            'fontFamily': 'roboto_slabregular',
+            'fontFamily': 'roboto_slabregular',  
+            'fontWeight': '400',          
+            'fontSize': '40px',
+            'lineHeight': '52px',
         },
 
         "filters-subtitle": {
@@ -24,11 +28,69 @@ export const themes = {
             'border': 'none',
             'color': '#3A3533',
             'fontFamily': 'roboto_slabregular',
+            'fontWeight': '400',
+            'fontSize': '20px',
+            'lineHeight': '32px',
+            'maxWidth': '785px',
+            'margin': '0 auto',
+        },        
+
+        "filters-categories-title": {
+            'backgroundColor': 'transparent',
+            'color': '#3A3533',
+            'fontFamily': 'roboto_slabregular',
+            'fontWeight': '400',
+            'fontSize': '20px',
+            'lineHeight': '32px',
+            'textAlign': 'left',
+            'margin': '40px 0 24px',
         },
 
-        "filters-categories": {},
+        "filter-category": {
+            'boxSizing': 'border-box',
+            'cursor': 'pointer',
+            'padding': '25px 0',
+            'margin': 'auto',
+            'height': '130px',
+            'width': '150px',
+            'display': 'flex',
+            'flexDirection': 'column',
+            'justifyContent': 'space-between',
+            'alignItems': 'center',
+            'background': '#FFFFFF',
+            'border': '1px solid #F9F8F5',
+            'boxShadow': '0px 4px 12px rgba(88, 79, 76, 0.12)',
+            'borderRadius': '10px',
+        },
 
-        "filters-categories-title": {},
+        "filter-category-title": {
+            'fontFamily': 'roboto_slabregular',
+            'fontWeight': '400',
+            'fontSize': '18px',
+            'lineHeight': '24px',
+            'textAlign': 'center',
+            'color': '#000000',
+        },
+
+        "selected-filters-wrapper": {
+            'display': 'flex',
+            'flexWrap': 'wrap',
+            'padding': '15px 0',
+        },
+
+        "selected-filters-item": {
+            'fontFamily': 'roboto_slabregular',
+            'background': '#FFFFFF',
+            'border': '1px solid #D8D7D6',
+            'borderRadius': '5px',
+            'padding': '5px 10px',
+            'cursor': 'pointer',
+            'fontWeight': '400',
+            'fontSize': '16px',
+            'lineHeight': '24px',
+            'color': '#000000',
+            'marginRight': '16px',    
+        },
 
 
 
@@ -43,6 +105,17 @@ export const themes = {
         "filters": {
             'backgroundColor': 'green',
             "border": '3px dashed yellow',
+        },
+
+        "filters-title": {
+            'backgroundColor': 'transparent',
+            'border': 'none',
+            'color': 'red',
+            'fontFamily': 'roboto_slabregular',
+        },
+
+        "filters-subtitle": {
+            'backgroundColor': 'purple',
         },
 
         "fonts-list": ['roboto_slabregular', 'robotothin_italic']

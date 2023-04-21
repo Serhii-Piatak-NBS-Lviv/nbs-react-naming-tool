@@ -1,9 +1,12 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useTranslation } from 'react-i18next';
 import { css, cx } from '@emotion/css';
 import themify, {themes} from '../../themes';
+
 import restAPI from '../../app/apisimul/filter/name-categories';
+
+import SectionHeader from './SectionHeader';
+import SwiperWithFilters from './SwiperWithFilters';
 
 /**
 * @restAPI  - list of name categories will come from 
@@ -27,11 +30,16 @@ const Filter = () => {
         <div className={cx(
             { [defaultTheme]: true },
             { [overrideTheme]: isThemeOverriden }
-        )} id="filters">
-            <img src={require('../../app/images/Content - Search.png')} />
-            <h1>{t('view hero landing title')}</h1>
-        </div>
-        
+        )} id="filters">            
+            <SectionHeader
+                title={t('filter header - get inspiration')}
+                subTitle={t('filter subtitle - we compiled a list')}
+            />
+            <SwiperWithFilters
+                title={t('filter slider title')}
+                restAPI={restAPI}
+            />
+        </div>        
     )
 };
 

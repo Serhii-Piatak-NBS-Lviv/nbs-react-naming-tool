@@ -10,7 +10,6 @@ function App() {
   const theme = useSelector(state => state.common.theme);
 
   let fl = fontsLoader(theme);
-  console.log(fl);
   
 injectGlobal`${fl}`;
 
