@@ -43,9 +43,15 @@ const Filter = () => {
         )}>
                 <SearchInput 
                     title={t('filter live search title')}
+                    placeholder={t('filter live search placeholder')}
                 />
                 <GenderSelection 
                     title={t('filter gender selector title')}
+                    radios={[
+                        t('filter gender female'),
+                        t('filter gender male'),
+                        t('filter gender both')
+                    ]}
                 />
             </div>
         </div>        

@@ -21,6 +21,15 @@ export const themes = {
             'fontWeight': '400',          
             'fontSize': '40px',
             'lineHeight': '52px',
+            'margin': '33px 0 16px',
+        },
+
+        'filters-heading-underline': {
+            'height': '1px',
+            'display': 'block',
+            'margin': '16px auto',
+            'borderBottom': '1.25px dashed #C9C5B9',
+            'maxWidth': '730px',
         },
 
         "filters-subtitle": {
@@ -61,6 +70,7 @@ export const themes = {
             'border': '1px solid #F9F8F5',
             'boxShadow': '0px 4px 12px rgba(88, 79, 76, 0.12)',
             'borderRadius': '10px',
+            'transition': '.2s',
         },
 
         "filter-category-title": {
@@ -75,11 +85,13 @@ export const themes = {
         "selected-filters-wrapper": {
             'display': 'flex',
             'flexWrap': 'wrap',
-            'margin': '24px 0 16px',
+            'margin': '24px 0 0',
         },
 
         "selected-filters-item": {
             'fontFamily': 'roboto_slabregular',
+            'whiteSpace': 'nowrap',
+            'width': 'fit-content',
             'background': '#FFFFFF',
             'border': '1px solid #D8D7D6',
             'borderRadius': '5px',
@@ -89,7 +101,7 @@ export const themes = {
             'fontSize': '16px',
             'lineHeight': '24px',
             'color': '#000000',
-            'margin': '0 16px 16px 0',             
+            'margin': '0 16px 16px 0',   
         },
 
         "bottom-filter-wrapper": {
@@ -120,6 +132,34 @@ export const themes = {
             'borderRadius': '10px',
             'height': '92px',
             'padding': '22px 27px',
+            'display': 'flex',
+        },
+
+        'filter-input-search': {
+            'width': '100%',
+            'border': 'none',
+            'borderBottom': 'solid 1px #C9C5B9',
+            'padding': '0 32px',
+            'fontFamily': 'roboto_slabregular',
+            'fontWeight': '300',
+            'fontSize': '16px',
+            'lineHeight': '24px',
+            'color': '#6B6868',
+            'position': 'relative',
+
+            ':focus-visible': {
+                'outline': 'none',
+            },
+
+            '::before': {
+                'content': '""',
+                'position': 'absolute',
+                'top': '0',
+                'left': '0',
+                'width': '30px',
+                'height': '30px',
+                'background': 'red',
+            }
         },
 
         "filter-gender-section": {
@@ -140,6 +180,21 @@ export const themes = {
             'lineHeight': '24px',            
             'color': '#3A3533',
             'margin': '0 0 15px',
+        },
+
+        'filter-gender-input': {
+            'margin': '0 8px 0 0',
+            'cursor': 'pointer',
+        },
+
+        'filter-gender-label': {
+            'fontFamily': 'roboto_slabregular',
+            'fontWeight': '400',
+            'fontSize': '16px',
+            'lineHeight': '24px',
+            'color': '#3A3533',
+            'marginRight': '12px',
+            'cursor': 'pointer',
         },
 
 

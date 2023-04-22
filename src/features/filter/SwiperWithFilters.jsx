@@ -1,4 +1,4 @@
-import { useDispatch  } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { cx } from '@emotion/css';
 import useThemify from '../../app/hooks/useThemify';
 
