@@ -17,7 +17,7 @@ const SearchInput = ({title, placeholder}) => {
     <div className={cx(
       { [wrapper]: true },
       { [overrideWrapper]: isWrapperOverriden }
-  )}>
+    )}>
         <p className={cx(
           { [inputTitle]: true },
           { [overrideInputTitle]: isInputTitleOverriden }
@@ -29,9 +29,9 @@ const SearchInput = ({title, placeholder}) => {
           { [overrideInputContainer]: isInputContainerOverriden }
         )}>
           <input className={cx(
-          { [input]: true },
-          { [overrideInput]: isInputOverriden }
-        )}
+            { [input]: true },
+            { [overrideInput]: isInputOverriden }
+          )}
             type="text" 
             placeholder={placeholder}
             onChange={(e) => dispatch(setSpecificName(e.target.value))}

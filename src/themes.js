@@ -10,8 +10,13 @@ export const themes = {
         "filters": {
             'backgroundColor': '#F9F8F5',
             "border": 'none',
-            'textAlign': 'center',
-            'padding': '40px 15px',            
+            'textAlign': 'center',                        
+        },
+
+        'filters-container':{
+            'padding': '40px 15px',
+            'maxWidth': '1139px',
+            'margin': '0 auto',
         },
 
         "filters-title": {
@@ -42,7 +47,12 @@ export const themes = {
             'lineHeight': '32px',
             'maxWidth': '785px',
             'margin': '0 auto',            
-        },        
+        },   
+        
+        "filters-swiper-wrapper": {
+            'position': 'relative',
+            'margin': '0 auto'
+        },
 
         "filters-categories-title": {
             'backgroundColor': 'transparent',
@@ -59,7 +69,7 @@ export const themes = {
             'boxSizing': 'border-box',
             'cursor': 'pointer',
             'padding': '25px 0',
-            'margin': 'auto',
+            'margin': '0 auto',
             'height': '130px',
             'width': '130px',
             'display': 'flex',

@@ -1,0 +1,25 @@
+#filters .swiper {
+    max-width: 1075px;
+    position: static;
+}
+
+#filters .swiper .swiper-button-next, 
+#filters .swiper .swiper-button-prev {
+    top: 65px;
+}
+ 
+#filters .swiper .swiper-button-next {
+    right: -7px;
+}
+
+#filters .swiper .swiper-button-prev {
+    left: -7px;
+}
+
+#filters .swiper .swiper-button-next:after,  
+#filters .swiper .swiper-button-prev:after {
+    color: #3A3533;
+    font-weight: 600;
+    font-size: 20px;
+}
+
