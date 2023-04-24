@@ -15,6 +15,7 @@ if (module.hot) {
 
 root.render(
   <React.StrictMode>
+    <div>Navbar</div>
     <Provider store={store}>
       <App />
     </Provider>
