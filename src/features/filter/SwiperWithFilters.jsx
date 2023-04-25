@@ -20,7 +20,11 @@ const SwiperWithFilters = ({title, restAPI}) => {
     const [mainTitle, overrideTitle, isMainTitleOverriden] = useThemify('filters-categories-title');
     const [swiperWrapper, overrideSwiperWrapper, isSwiperWrapperOverriden] = useThemify('filters-swiper-wrapper');
 
-    const countOfSlides = restAPI.list.length > 7 ? 7 : restAPI.list.length;
+    const countOfSlides = (maxCount) => {
+        return restAPI.list.length > maxCount 
+            ? maxCount 
+            : restAPI.list.length;
+    }
     const isScrollbar = window.innerWidth > 768 ? false : { draggable: true };
 
     const handleFilter = (category) => {
@@ -53,17 +57,17 @@ const SwiperWithFilters = ({title, restAPI}) => {
                         slidesPerView: 3.6,
                     },
                     640: {
-                        slidesPerView: 4,
+                        slidesPerView: countOfSlides(4),
                         spaceBetween: 16
                     },
                     768: {
-                      slidesPerView: 5,
+                        slidesPerView: countOfSlides(5),
                     },
                     1024: {
-                      slidesPerView: 6,
+                        slidesPerView: countOfSlides(6),
                     },
                     1139: {
-                        slidesPerView: countOfSlides,
+                        slidesPerView: countOfSlides(7),
                     }
                 }}>
                 {
