@@ -197,6 +197,16 @@ export const themes = {
             'cursor': 'pointer',
         },
 
+        'filter-drawer-overlay': {
+            'backgroundColor': 'rgba(12,13,16,0.7)',
+            'height': '100vh',
+        },
+
+        'filter-drawer-content': {
+            'backgroundColor': '#F1F1F1',
+            'height': '540px',
+        },
+
 
 
         "view": {

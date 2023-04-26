@@ -1,23 +1,22 @@
 import { useDispatch } from 'react-redux';
 import { cx } from '@emotion/css';
-import useThemify from '../../app/hooks/useThemify';
-
 import { Navigation, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-import SwiperItem from './SwiperItem';
-import SelectedFilters from './SelectedFilters';
-
-import { setSelectedCategory } from './filterSlice';
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
 
-const SwiperWithFilters = ({title, restAPI}) => {
+// import useThemify from '../../app/hooks/useThemify';
+import useThemifiedComponent from '../../app/hooks/useThemifiedComponent';
+import SwiperItem from './SwiperItem';
+import SelectedFilters from './SelectedFilters';
+import { setSelectedCategory } from './filterSlice';
+
+const SwiperWithFilters = ({restAPI, title}) => {
     const dispatch = useDispatch();    
 
-    const [mainTitle, overrideTitle, isMainTitleOverriden] = useThemify('filters-categories-title');
+    // const [mainTitle, overrideTitle, isMainTitleOverriden] = useThemify('filters-categories-title');
+    const [cssCategoriesTitle] = useThemifiedComponent('filters-categories-title');
 
     const handleFilter = (category) => {
         dispatch(setSelectedCategory(category));
@@ -25,12 +24,7 @@ const SwiperWithFilters = ({title, restAPI}) => {
 
   return (
     <div>
-        <h3 className={cx(
-            { [mainTitle]: true },
-            { [overrideTitle]: isMainTitleOverriden }
-        )}>
-            {title}
-        </h3>
+        <h3 className={cssCategoriesTitle}> {title} </h3>
         <Swiper
             modules={[Navigation, Scrollbar, A11y]}
             spaceBetween={20}
