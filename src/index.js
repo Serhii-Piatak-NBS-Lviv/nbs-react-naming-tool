@@ -15,7 +15,7 @@ if (module.hot) {
 
 root.render(
   <React.StrictMode>
-    <div>Navbar</div>
+    <div className='global-navigation'>Navbar</div>
     <Provider store={store}>
       <App />
     </Provider>

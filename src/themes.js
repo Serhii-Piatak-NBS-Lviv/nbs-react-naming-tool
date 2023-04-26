@@ -200,10 +200,43 @@ export const themes = {
 
 
         "view": {
-            
+            'backgroundColor': '#F1F1F1',
+            'margin': '0',
+            'minHeight': '480px',
+
+            '& .view-hero-title': {
+                'color': '#E81C24',
+                'textTransform': 'uppercase',
+                'fontSize': '10vw',
+                'width': '70%',
+                'fontFamily': 'roboto_slabbold',
+                'fontWeight': 700,         
+            }
         },
 
-        "fonts-list": ['roboto_slabregular']
+        "view-top-title": {
+            'margin': 0,
+        },
+
+        "view-results-header": {
+            'backgroundColor': '#D8D7D6',
+        },
+
+        "view-results-body": {
+            'backgroundColor': '#FFF',
+        },
+
+        "view-results-footer": {
+            'backgroundColor': '#FFF',
+        },
+
+        "view-results-hero": {
+            'position': 'absolute',
+            'bottom': '-12%',
+            'right': '15%',
+        },
+
+        "fonts-list": ['roboto_slabregular', 'roboto_slabbold']
     },
     "test-dummy": {
 

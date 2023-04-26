@@ -16,7 +16,7 @@ injectGlobal`${fl}`;
   return (
     <div className="nbs-naming-tool-container">
       <Filter />
-      {/* <View locale={locale} /> */}
+      <View />
     </div>
   );
 }
