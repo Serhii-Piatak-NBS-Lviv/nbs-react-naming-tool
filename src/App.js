@@ -10,14 +10,13 @@ function App() {
   const theme = useSelector(state => state.common.theme);
 
   let fl = fontsLoader(theme);
-  console.log(fl);
   
 injectGlobal`${fl}`;
 
   return (
     <div className="nbs-naming-tool-container">
       <Filter />
-      {/* <View locale={locale} /> */}
+      <View />
     </div>
   );
 }
