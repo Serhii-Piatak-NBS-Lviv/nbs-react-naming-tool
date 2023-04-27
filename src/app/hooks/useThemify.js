@@ -1,8 +1,7 @@
-import { useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import { css } from '@emotion/css';
 
-import themify, {themes} from '../themes';
+import themify, {themes} from '../../themes';
 
 export default function useThemify (uiComponent) {
     const theme = useSelector(state => state.common.theme);
