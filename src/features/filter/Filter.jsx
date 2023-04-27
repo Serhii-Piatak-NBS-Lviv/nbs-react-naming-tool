@@ -18,8 +18,6 @@ import SwiperWithFilters from './SwiperWithFilters';
 import GenderSelection from './GenderSelection';
 import SearchInput from './SearchInput';
 
-import './AdditionalStyles.css';
-
 /**
 * @restAPI  - list of name categories will come from 
 Drupal back-end. For first develop iteration static JSON

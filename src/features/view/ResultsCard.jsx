@@ -15,16 +15,16 @@ import useThemifiedComponent from '../../app/hooks/useThemifiedComponent';
 **/
 
 const ShareBar = () => {
-  return(
-    <HStack>
-        <FaLink />
-        <FaTwitter />
-        <FaFacebookMessenger />
-    </HStack>
-   )
-  }
+    return (
+        <HStack>
+            <FaLink />
+            <FaTwitter />
+            <FaFacebookMessenger />
+        </HStack>
+    )
+}
 
-const NameClassifier = ({categoryIds, gender}) => {
+const NameClassifier = ({ categoryIds, gender }) => {
     const categories = categoryIds.reduce(
         (acc, itm) => {
             restAPI.list.forEach(
@@ -33,60 +33,60 @@ const NameClassifier = ({categoryIds, gender}) => {
             return acc;
         }, []
     );
-   
-  return(
-    <HStack>
-        {(gender === "Female" || "Both") ? <BsGenderFemale /> : null}
-        {(gender === "Male" || "Both") ? <BsGenderMale /> : null}
-        <Text>{categories.join('-')}</Text>
-    </HStack>
-   )
+
+    return (
+        <HStack>
+            {(gender === "Female" || "Both") ? <BsGenderFemale /> : null}
+            {(gender === "Male" || "Both") ? <BsGenderMale /> : null}
+            <Text>{categories.join('-')}</Text>
+        </HStack>
+    )
 }
 
-const SelectedName = ({petName}) => {
+const SelectedName = ({ petName }) => {
 
     const [cssHeader] = useThemifiedComponent('view-results-header');
     const [cssBody] = useThemifiedComponent('view-results-body');
     const [cssFooter] = useThemifiedComponent('view-results-footer');
     const [cssImage] = useThemifiedComponent('view-results-hero');
 
-  return(
-    <Card w='55%'>
-        <CardHeader className={cssHeader}>
-            <h3>{petName.title}</h3>
-        </CardHeader>
+    return (
+        <Card w='100%'>
+            <CardHeader className={cssHeader}>
+                <h3>{petName.title}</h3>
+            </CardHeader>
 
-        <CardBody className={cssBody} h='200px'>
-            <VStack 
-                divider={
-                <StackDivider borderColor='red.500' bg='rgb(201,197,185)' h='2px'/>
-                } >
-                <NameClassifier 
-                    categoryIds={petName.categories}
-                    gender={petName.gender} />
-                <Text>{petName.description}</Text>
-            </VStack>          
-        </CardBody>
+            <CardBody className={cssBody} h='100%'>
+                <VStack
+                    divider={
+                        <StackDivider borderColor='red.500' bg='rgb(201,197,185)' h='2px' />
+                    } >
+                    <NameClassifier
+                        categoryIds={petName.categories}
+                        gender={petName.gender} />
+                    <Text>{petName.description}</Text>
+                </VStack>
+            </CardBody>
 
-        <CardFooter className={cssFooter} h='100px'>
-            <ShareBar />
-        </CardFooter>
-        <Image
-            objectFit='cover'
-            src={require('../../app/apisimul/view/hero-puppy.png')}
-            alt='Naming Tool Hero Image'
-            w='12%'
-            className={cssImage}
-        />
-    </Card>
-   )
+            <CardFooter className={cssFooter} h='100px'>
+                <ShareBar />
+            </CardFooter>
+            <Image
+                objectFit='cover'
+                src={require('../../app/apisimul/view/hero-puppy.png')}
+                alt='Naming Tool Hero Image'
+                w='12%'
+                className={cssImage}
+            />
+        </Card>
+    )
 };
 
 
 export const ResultsCard = () => {
-  return(
-    <Stack direction='row'>
-        <SelectedName petName={nameSelection} />
-    </Stack>
-   )
+    return (
+        <Stack direction='row'>
+            <SelectedName petName={nameSelection} />
+        </Stack>
+    )
 };

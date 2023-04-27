@@ -5,6 +5,7 @@ import useThemify from '../../app/hooks/useThemify';
 import { cx } from '@emotion/css';
 
 import LandingCard from './LandingCard';
+import NameSwiper from './NameSwiper';
 import { AlphabetSelector } from './AlphabetSelector';
 import { ResultsCard } from './ResultsCard';
 
@@ -19,22 +20,26 @@ export const View = () => {
     const [defaultTheme, overrideTheme, isThemeOverriden] = useThemify('view');
     const [dftThmTopTitle, ovrdThmTopTitle, isThmTopTitleOvrd] = useThemify('view-top-title');
 
-    return(
+    return (
         <div className={cx(
             { [defaultTheme]: true },
             { [overrideTheme]: isThemeOverriden }
         )} id='view'>
             <h2 className={cx(
-            { [dftThmTopTitle]: true },
-            { [ovrdThmTopTitle]: isThmTopTitleOvrd }
+                { [dftThmTopTitle]: true },
+                { [ovrdThmTopTitle]: isThmTopTitleOvrd }
             )} id="view-top-title">
                 {t('view section title')}
             </h2>
             <AlphabetSelector />
             {/* <LandingCard /> */}
-            <ResultsCard />
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <NameSwiper />
+                <ResultsCard />
+            </div>
+
         </div>
-        
+
     )
 };
 
