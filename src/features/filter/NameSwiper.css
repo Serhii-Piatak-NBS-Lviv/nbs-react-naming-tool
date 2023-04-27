@@ -1,0 +1,25 @@
+.nameSwipper .swiper {
+    position: static;
+}
+
+.nameSwipper .swiper .swiper-wrapper .swiper-slide-active {
+    background: #D8D7D6 !important;
+    transition: .3s !important;
+}
+
+.nameSwipper .swiper .swiper-button-prev {
+    display: none !important;
+}
+.nameSwipper .swiper .swiper-button-next {
+    transform: rotate(90deg) !important;
+    left: 120px !important;
+    bottom: 45px !important;
+    top: auto !important;
+}
+
+.nameSwipper .swiper .swiper-button-next:after {
+    color: #3A3533 !important;
+    font-weight: 600 !important;
+    font-size: 20px !important;
+}
+

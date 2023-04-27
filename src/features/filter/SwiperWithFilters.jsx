@@ -1,89 +1,80 @@
 import { useDispatch } from 'react-redux';
-import { cx } from '@emotion/css';
-import useThemify from '../../app/hooks/useThemify';
-
 import { Navigation, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
-
-import SwiperItem from './SwiperItem';
-import SelectedFilters from './SelectedFilters';
-
-import { setSelectedCategory } from './filterSlice';
-
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
 
-const SwiperWithFilters = ({title, restAPI}) => {
-    const dispatch = useDispatch();    
+import useThemifiedComponent from '../../app/hooks/useThemifiedComponent';
+import SwiperItem from './SwiperItem';
+import SelectedFilters from './SelectedFilters';
+import { setSelectedCategory } from './filterSlice';
 
-    const [mainTitle, overrideTitle, isMainTitleOverriden] = useThemify('filters-categories-title');
-    const [swiperWrapper, overrideSwiperWrapper, isSwiperWrapperOverriden] = useThemify('filters-swiper-wrapper');
+const SwiperWithFilters = ({ restAPI, title }) => {
+    const dispatch = useDispatch();
 
     const countOfSlides = (maxCount) => {
-        return restAPI.list.length > maxCount 
-            ? maxCount 
+        return restAPI.list.length > maxCount
+            ? maxCount
             : restAPI.list.length;
     }
     const isScrollbar = window.innerWidth > 768 ? false : { draggable: true };
+
+    const [cssCategoriesTitle] = useThemifiedComponent('filters-categories-title');
+    const [cssSwiperWrapper] = useThemifiedComponent('filters-swiper-wrapper');
 
     const handleFilter = (category) => {
         dispatch(setSelectedCategory(category));
     }
 
-  return (
-    <>
-        <h3 className={cx(
-            { [mainTitle]: true },
-            { [overrideTitle]: isMainTitleOverriden }
-        )}>
-            {title}
-        </h3>
-        <div className={cx(
-            { [swiperWrapper]: true },
-            { [overrideSwiperWrapper]: isSwiperWrapperOverriden }
-        )}>
-            <Swiper
-                modules={[Navigation, Scrollbar, A11y]}
-                spaceBetween={20}            
-                navigation
-                scrollbar={isScrollbar}
-                breakpoints={{
-                    320: {
-                        slidesPerView: 3.2,
-                        spaceBetween: 16
-                    },
-                    480: {
-                        slidesPerView: 3.6,
-                    },
-                    640: {
-                        slidesPerView: countOfSlides(4),
-                        spaceBetween: 16
-                    },
-                    768: {
-                        slidesPerView: countOfSlides(5),
-                    },
-                    1024: {
-                        slidesPerView: countOfSlides(6),
-                    },
-                    1139: {
-                        slidesPerView: countOfSlides(7),
+    return (
+        <>
+            <h3 className={cssCategoriesTitle}>
+                {title}
+            </h3>
+            <div className={cssSwiperWrapper}>
+                <Swiper
+                    modules={[Navigation, Scrollbar, A11y]}
+                    spaceBetween={20}
+                    navigation
+                    scrollbar={isScrollbar}
+                    breakpoints={{
+                        320: {
+                            slidesPerView: 3.2,
+                            spaceBetween: 16
+                        },
+                        480: {
+                            slidesPerView: 3.6,
+                        },
+                        640: {
+                            slidesPerView: countOfSlides(4),
+                            spaceBetween: 16
+                        },
+                        768: {
+                            slidesPerView: countOfSlides(5),
+                        },
+                        1024: {
+                            slidesPerView: countOfSlides(6),
+                        },
+                        1139: {
+                            slidesPerView: countOfSlides(7),
+                        }
+                    }}>
+                    {
+                        restAPI.list.map((category, index) => {
+                            return (
+                                <SwiperSlide key={index}>
+                                    <SwiperItem {...category} handleFilter={handleFilter} />
+                                </SwiperSlide>
+                            )
+                        })
                     }
-                }}>
-                {
-                    restAPI.list.map((category, index) => {
-                        return (
-                            <SwiperSlide key={index}>
-                                <SwiperItem {...category} handleFilter={handleFilter}/>
-                            </SwiperSlide>
-                        )
-                    })
-                }       
-                <SelectedFilters handleFilter={handleFilter}/> 
-            </Swiper>
-        </div>
-    </>    
-  )
+                    <SelectedFilters handleFilter={handleFilter} />
+                </Swiper>
+            </div>
+        </>
+
+    )
 }
 
 export default SwiperWithFilters;
