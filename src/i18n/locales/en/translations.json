@@ -12,5 +12,6 @@
     "alphabet": "A-B-C-D-E-F-G-H-I-J-K-L-M-N-O-P-Q-R-S-T-U-V-W-X-Y-Z",
     "view hero landing title": "i need a name",
     "view notfound warn": "Ops, you've selected too many fiters and there is not matching names for that!",
-    "view notfound tips": "Try removing some filters"
+    "view notfound tips": "Try removing some filters",
+    "view-alphabet-swipe-tip": "You can swipe letters!"
 }
