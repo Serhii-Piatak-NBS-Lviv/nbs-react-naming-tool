@@ -51,7 +51,7 @@ export const themes = {
         
         "filters-swiper-wrapper": {
             'position': 'relative',
-            'margin': '0 auto'
+            'margin': '0 auto',
         },
 
         "filters-categories-title": {

@@ -1,9 +1,9 @@
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { css } from '@emotion/css';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-import './NameSwiper.css';
 
 import namesList from '../../app/apisimul/view/names-list';
 
@@ -30,6 +30,39 @@ const swiperItem = {
     cursor: 'grab',
 }
 
+const nameSwipper = css`
+    & .swiper {
+        position: static;
+        text-align: center;
+    };
+
+    & .swiper .swiper-wrapper {
+        z-index: 0;
+    };
+
+    & .swiper .swiper-wrapper .swiper-slide-active {
+        background: #D8D7D6 !important;
+        transition: .3s;
+    };
+
+    & .swiper .swiper-button-prev {
+        display: none;
+    };
+
+    & .swiper .swiper-button-next {
+        transform: rotate(90deg);
+        left: 106px;
+        bottom: 30px;
+        top: auto;
+    };
+
+    & .swiper .swiper-button-next:after {
+        color: #3A3533;
+        font-weight: 600;
+        font-size: 20px;
+    };
+`;
+
 const NameSwiper = () => {
 
     const countOfSlides = (maxCount) => {
@@ -40,7 +73,7 @@ const NameSwiper = () => {
 
     return (
         <div
-            className={'nameSwipper'}
+            className={nameSwipper}
             style={wrapper}
         >
             <Swiper
