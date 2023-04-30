@@ -34,7 +34,12 @@ const restAPI = {
             "id": "some-213-645",
             "icon": "lorem-ipsum-icon.png",
             "title": "Lorem ipsum",
-        }
+        },
+        {
+            "id": "some-213-546",
+            "icon": "drink-icon.png",
+            "title": "Popular-II",
+        },
     ]
 };
 

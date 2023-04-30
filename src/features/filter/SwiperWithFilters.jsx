@@ -1,49 +1,111 @@
 import { useDispatch } from 'react-redux';
-import { cx } from '@emotion/css';
 import { Navigation, Scrollbar, A11y } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { css, cx } from '@emotion/css';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
 
-// import useThemify from '../../app/hooks/useThemify';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/scrollbar';
+// import './CategorySwiper.css';
+
 import useThemifiedComponent from '../../app/hooks/useThemifiedComponent';
 import SwiperItem from './SwiperItem';
 import SelectedFilters from './SelectedFilters';
 import { setSelectedCategory } from './filterSlice';
 
-const SwiperWithFilters = ({restAPI, title}) => {
-    const dispatch = useDispatch();    
+const cssSwiperNesting = css`
+    & .swiper {
+        max-width: 94%;
+        position: static;
+    };
 
-    // const [mainTitle, overrideTitle, isMainTitleOverriden] = useThemify('filters-categories-title');
+    & .swiper .swiper-button-next, & .swiper .swiper-button-prev {
+        top: 65px;
+    };
+
+    & .swiper .swiper-button-next {
+        right: -7px;
+    };
+
+    & .swiper .swiper-button-prev {
+        left: -7px;
+    };
+
+    & .swiper .swiper-button-next:after, & .swiper .swiper-button-prev:after {
+        color: #3A3533;
+        font-weight: 600;
+        font-size: 20px;
+    }
+`;
+
+const SwiperWithFilters = ({ restAPI, title }) => {
+    const dispatch = useDispatch();
+
+    const countOfSlides = (maxCount) => {
+        return restAPI.list.length > maxCount
+            ? maxCount
+            : restAPI.list.length;
+    }
+    const isScrollbar = window.innerWidth > 768 ? false : { draggable: true };
+
     const [cssCategoriesTitle] = useThemifiedComponent('filters-categories-title');
+    const [cssSwiperWrapper] = useThemifiedComponent('filters-swiper-wrapper');
 
     const handleFilter = (category) => {
         dispatch(setSelectedCategory(category));
     }
 
-  return (
-    <div>
-        <h3 className={cssCategoriesTitle}> {title} </h3>
-        <Swiper
-            modules={[Navigation, Scrollbar, A11y]}
-            spaceBetween={20}
-            slidesPerView={7}
-            navigation
-            scrollbar={{ draggable: true }}>
-            {
-                restAPI.list.map((category, index) => {
-                    return (
-                        <SwiperSlide key={index}>
-                            <SwiperItem {...category} handleFilter={handleFilter}/>
-                        </SwiperSlide>
-                    )
-                })
-            }       
-            <SelectedFilters handleFilter={handleFilter}/> 
-        </Swiper>
-    </div>    
-  )
+    return (
+        <>
+            <h3 className={cssCategoriesTitle}>
+                {title}
+            </h3>
+            <div className={cx(cssSwiperWrapper,cssSwiperNesting)}>
+                <Swiper
+                    modules={[Navigation, Scrollbar, A11y]}
+                    spaceBetween={20}
+                    navigation
+                    scrollbar={isScrollbar}
+                    breakpoints={{
+                        320: {
+                            slidesPerView: 3.2,
+                            spaceBetween: 16
+                        },
+                        480: {
+                            slidesPerView: 3.6,
+                        },
+                        640: {
+                            slidesPerView: countOfSlides(4),
+                            spaceBetween: 16
+                        },
+                        768: {
+                            slidesPerView: countOfSlides(5),
+                        },
+                        1024: {
+                            slidesPerView: countOfSlides(6),
+                        },
+                        1139: {
+                            slidesPerView: countOfSlides(7),
+                        }
+                    }}>
+                    {
+                        restAPI.list.map((category, index) => {
+                            return (
+                                <SwiperSlide key={index}>
+                                    <SwiperItem {...category} handleFilter={handleFilter} />
+                                </SwiperSlide>
+                            )
+                        })
+                    }
+                    <SelectedFilters handleFilter={handleFilter} />
+                </Swiper>
+            </div>
+        </>
+
+    )
 }
 
 export default SwiperWithFilters;

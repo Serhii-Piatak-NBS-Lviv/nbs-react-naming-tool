@@ -6,6 +6,7 @@ import { cx } from '@emotion/css';
 
 import LandingCard from './LandingCard';
 import AlphabetSlider from './AlphabetSlider';
+import NameSwiper from './NameSwiper';
 import { ResultsCard } from './ResultsCard';
 
 
@@ -32,9 +33,11 @@ export const View = () => {
             </h2>
             <AlphabetSlider alphabet={t('alphabet')} />
             {/* <LandingCard /> */}
-            <ResultsCard />
+            <div style={{ display: 'flex', justifyContent: 'center' }}>
+                <NameSwiper />
+                <ResultsCard />
+            </div>
         </div>
-        
     )
 };
 
