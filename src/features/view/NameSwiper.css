@@ -1,0 +1,30 @@
+#view .nameSwipper .swiper {
+    position: static;
+    text-align: center;
+}
+
+#view .nameSwipper .swiper .swiper-wrapper {
+    z-index: 0;
+}
+
+#view .nameSwipper .swiper .swiper-wrapper .swiper-slide-active {
+    background: #D8D7D6 !important;
+    transition: .3s;
+}
+
+#view .nameSwipper .swiper .swiper-button-prev {
+    display: none;
+}
+
+#view .nameSwipper .swiper .swiper-button-next {
+    transform: rotate(90deg);
+    left: 106px;
+    bottom: 30px;
+    top: auto;
+}
+
+#view .nameSwipper .swiper .swiper-button-next:after {
+    color: #3A3533;
+    font-weight: 600;
+    font-size: 20px;
+}
