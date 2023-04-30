@@ -5,7 +5,7 @@ import useThemify from '../../app/hooks/useThemify';
 import { cx } from '@emotion/css';
 
 import LandingCard from './LandingCard';
-import { AlphabetSelector } from './AlphabetSelector';
+import AlphabetSlider from './AlphabetSlider';
 import { ResultsCard } from './ResultsCard';
 
 
@@ -30,7 +30,7 @@ export const View = () => {
             )} id="view-top-title">
                 {t('view section title')}
             </h2>
-            <AlphabetSelector />
+            <AlphabetSlider alphabet={t('alphabet')} />
             {/* <LandingCard /> */}
             <ResultsCard />
         </div>

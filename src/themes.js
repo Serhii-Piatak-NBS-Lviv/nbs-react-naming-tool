@@ -246,6 +246,54 @@ export const themes = {
             'right': '15%',
         },
 
+        "wiev-alphabet-container": {
+            'width': '70vw',
+            'height': '69px',
+            'backgroundColor': '#FFF',
+            'borderRadius': '100px',
+            'boxShadow': '0px 0px 2px rgba(58,53,51,0.2), 0px 2px 12px rgba(58,53,51,0.1)',
+            'margin': '20px 0',
+            'padding': '0 1%',
+            'z-index': '0',
+        },
+
+        "wiev-alphabet-item": {
+            'width': '37px',
+            'height': '37px',
+            'display': 'flex',
+            'justifyContent': 'center',
+            'alignItems': 'center',
+            'fontSize': '25px',
+            'lineHeight': '35px',
+            'color': '#3A3533',
+            'fontFamily': 'roboto_slabregular',
+            'cursor': 'pointer',
+        },
+
+        "wiev-alphabet-item-selected": {
+            'backgroundColor': '#E81C24',
+            'color': '#FFF',
+            'border-radius': '200px',
+            'margin': '0',
+            'padding': '0',
+            'aspect-ratio': '1',
+        },
+
+        "view-alphabet-swipe-tip": {
+            'color': '#C9C5B9',
+            'backgroundColor': '#bee3f8',
+            'borderRadius': '100px',
+            'padding': '0.5% 0',
+        },
+
+        "view-alphabet-swipe-tip-close": {
+            'position': 'relative',
+            'right': '-30%',
+            'border': 'none',
+            'background': 'transparent',
+            'color': '#C9C5B9',
+        },
+
         "fonts-list": ['roboto_slabregular', 'roboto_slabbold']
     },
     "test-dummy": {
