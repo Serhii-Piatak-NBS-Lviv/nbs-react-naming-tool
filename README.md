@@ -17,8 +17,12 @@ Comprehensive overview of toolset used:
 | react-icons | Robust collection of popular icons for React projects | [NPM-page](https://www.npmjs.com/package/react-icons) | [homepage](https://react-icons.github.io/react-icons) |
 | react-loading-overlay | A customizable, simple loading overlay with spinner and transitions | [NPM-page](https://www.npmjs.com/package/react-loading-overlay) | [homepage](https://github.com/derrickpelletier/react-loading-overlay#readme) |
 | react-redux | React Application state management toolkit | [NPM-page](https://www.npmjs.com/package/react-redux) | [homepage](https://redux.js.org/) |
+| redux devtools | Hels to track Redux applcation state storage | [NPM-page](https://www.npmjs.com/package/redux-devtools-extension) | [homepage](https://github.com/reduxjs/redux-devtools) |
 | react-spinners | A collection of loading spinners with React.js | [NPM-page](https://www.npmjs.com/package/react-spinners) | [homepage](https://www.davidhu.io/react-spinners/) |
 | swiper | Modern Mobile Touch Slider | [NPM-page](https://www.npmjs.com/package/swiper) | [homepage] (https://swiperjs.com/) |
+| axios | Promise based HTTP client for the browser and node.js | [NPM-page](https://www.npmjs.com/package/axios) | [homepage](https://axios-http.com/)|
+| React Query | Data-fetching library for React web applications | [NPM-page](https://www.npmjs.com/package/react-query) | [homepage](https://tanstack.com/query/latest/docs/react/overview) |
+| React Query Devtools | Help to visualize all of the inner workings of React Query | [NPM-page](https://www.npmjs.com/package/react-query-devtools) | [homepage](https://tanstack.com/query/latest/docs/react/devtools) |
 
 
 ## Application Look&Feel, Main React Components
