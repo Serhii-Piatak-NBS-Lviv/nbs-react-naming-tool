@@ -9,7 +9,6 @@ import 'swiper/css/scrollbar';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/scrollbar';
-// import './CategorySwiper.css';
 
 import useThemifiedComponent from '../../app/hooks/useThemifiedComponent';
 import SwiperItem from './SwiperItem';
@@ -41,14 +40,15 @@ const cssSwiperNesting = css`
     }
 `;
 
-const SwiperWithFilters = ({ restAPI, title }) => {
+const SwiperWithFilters = ({ categories, title }) => {
     const dispatch = useDispatch();
 
     const countOfSlides = (maxCount) => {
-        return restAPI.list.length > maxCount
+        return categories.length > maxCount
             ? maxCount
-            : restAPI.list.length;
+            : categories.length;
     }
+
     const isScrollbar = window.innerWidth > 768 ? false : { draggable: true };
 
     const [cssCategoriesTitle] = useThemifiedComponent('filters-categories-title');
@@ -92,9 +92,9 @@ const SwiperWithFilters = ({ restAPI, title }) => {
                         }
                     }}>
                     {
-                        restAPI.list.map((category, index) => {
+                        categories.map((category) => {
                             return (
-                                <SwiperSlide key={index}>
+                                <SwiperSlide key={category.id}>
                                     <SwiperItem {...category} handleFilter={handleFilter} />
                                 </SwiperSlide>
                             )
@@ -104,7 +104,6 @@ const SwiperWithFilters = ({ restAPI, title }) => {
                 </Swiper>
             </div>
         </>
-
     )
 }
 

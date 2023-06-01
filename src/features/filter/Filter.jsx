@@ -1,7 +1,8 @@
 import { useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useSelector } from 'react-redux';
 import useThemifiedComponent from '../../app/hooks/useThemifiedComponent';
-import restAPI from '../../app/apisimul/filter/name-categories';
+// import restAPI from '../../app/apisimul/filter/name-categories';
 import {
     Drawer,
     DrawerBody,
@@ -28,8 +29,9 @@ used from src/app/apisimul  folder
 * to filterSlice part of Redux storage
 **/
 
-const Filter = () => {
+const Filter = ({categoriesLoaded, namesLoaded}) => {
     const { isOpen, onOpen, onClose } = useDisclosure();
+    const categories = useSelector((state) => state.filter.categoryList);
     const btnRef = useRef();
 
     const { t } = useTranslation();
@@ -61,11 +63,12 @@ const Filter = () => {
                     <DrawerCloseButton />
 
                     <DrawerBody>
-
-                        <SwiperWithFilters
-                            title={t('filter slider title')}
-                            restAPI={restAPI}
-                        />
+                        {!categoriesLoaded.isLoading && (
+                            <SwiperWithFilters
+                                title={t('filter slider title')}
+                                categories={categories}
+                            />
+                        )}    
 
                         <div className={cssBottomFilters}>
                             <SearchInput
