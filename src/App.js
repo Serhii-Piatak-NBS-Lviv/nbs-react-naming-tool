@@ -28,9 +28,10 @@ function App() {
     if (categories.data) { categories.data.map((category) => dispatch(addCategory(category))) };
   }, [names.data, categories.data])
 
+
   return (
     <div className="nbs-naming-tool-container">
-      <Filter />
+      <Filter categoriesLoaded={categories.isLoading} namesLoaded={names.isLoading} />
       <View />
       <ReactQueryDevtools initialIsOpen={false} />
     </div>
